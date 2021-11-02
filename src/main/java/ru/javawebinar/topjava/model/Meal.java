@@ -23,7 +23,7 @@ public class Meal extends AbstractBaseEntity {
     public static final String ALL_SORTED = "Meal.getAllSorted";
     public static final String BETWEEN = "Meal.getBetween";
 
-    @Column(name = "date_time", nullable = false, columnDefinition = "timestamp default now()")
+    @Column(name = "date_time", nullable = false)
     @NotNull
     private LocalDateTime dateTime;
 
@@ -32,11 +32,11 @@ public class Meal extends AbstractBaseEntity {
     @Size(max = 100)
     private String description;
 
-    @Column(name = "calories", nullable = false, columnDefinition = "int default 500")
+    @Column(name = "calories", nullable = false)
     @Range(min = 1, max = 10000)
     private int calories;
 
-    //  @NotNull
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
