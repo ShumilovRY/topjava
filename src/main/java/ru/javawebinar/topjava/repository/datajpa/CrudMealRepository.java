@@ -12,7 +12,8 @@ import java.util.List;
 
 @Transactional(readOnly = true)
 public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
-    Meal getByIdAndUserId(int id, int userId);
+    @Query("select m from Meal m where m.id = ?1 and m.user.id = ?2")
+    Meal findByIdAndUserId(int id, int userId);
 
     @Query(name = Meal.GET_BETWEEN)
     List<Meal> getBetweenHalfOpen(
@@ -25,5 +26,6 @@ public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
     @Query(name = Meal.DELETE)
     int delete(@Param("id") int id, @Param("userId") int userId);
 
+    @Query("select m from Meal m where m.user.id = ?1 order by m.dateTime DESC")
     List<Meal> getByUserIdOrderByDateTimeDesc(int userId);
 }
