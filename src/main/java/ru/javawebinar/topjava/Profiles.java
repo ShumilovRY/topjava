@@ -8,11 +8,11 @@ public class Profiles {
             JPA = "jpa",
             DATAJPA = "datajpa";
 
-    public static final String REPOSITORY_IMPLEMENTATION = JDBC;
-    public static String getActiveMapProfile() {
-        final String activeProfile = System.getProperty("spring.profiles.active");
-        return  activeProfile;
-    }
+    public static final String REPOSITORY_IMPLEMENTATION = DATAJPA;
+//    public static String getActiveMapProfile() {
+//        final String activeProfile = System.getProperty("spring.profiles.active");
+//        return  activeProfile;
+//    }
     public static final String
             POSTGRES_DB = "postgres",
             HSQL_DB = "hsqldb";
