@@ -21,6 +21,10 @@ public class MatcherFactory {
         return new Matcher<>(clazz, fieldsToIgnore);
     }
 
+    public static <T> Matcher<T> usingEqualsComparator(Class<T> clazz) {
+        return new Matcher<>(clazz);
+    }
+
     public static class Matcher<T> {
         private final Class<T> clazz;
         private final String[] fieldsToIgnore;
