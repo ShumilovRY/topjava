@@ -7,6 +7,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.service.MealService;
+import ru.javawebinar.topjava.util.MealsUtil;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 import ru.javawebinar.topjava.web.AbstractControllerTest;
 import ru.javawebinar.topjava.web.json.JsonUtil;
@@ -18,7 +19,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static ru.javawebinar.topjava.MealTestData.*;
 import static ru.javawebinar.topjava.UserTestData.USER_ID;
 import static ru.javawebinar.topjava.UserTestData.user;
-import static ru.javawebinar.topjava.util.MealsUtil.createTo;
 import static ru.javawebinar.topjava.util.MealsUtil.getTos;
 
 public class MealRestControllerTest extends AbstractControllerTest {
@@ -83,7 +83,7 @@ public class MealRestControllerTest extends AbstractControllerTest {
                 .param("endDate", "2020-01-31").param("endTime", "11:00"))
                 .andExpect(status().isOk())
                 .andDo(print())
-                .andExpect(MEAL_TO_MATCHER.contentJson(createTo(meal5, true), createTo(meal1, false)));
+                .andExpect(MEAL_TO_MATCHER.contentJson(MealsUtil.createTo(meal5, true), MealsUtil.createTo(meal1, false)));
     }
 
     @Test
