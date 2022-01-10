@@ -21,7 +21,7 @@ public abstract class AbstractUserServiceTest extends AbstractServiceTest {
     protected UserService service;
 
     @Test
-    public void create() {
+    void create() {
         User created = service.create(getNew());
         int newId = created.id();
         User newUser = getNew();
